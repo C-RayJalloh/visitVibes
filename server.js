@@ -26,7 +26,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const user = require('./Models/user');
 const MongoDBStore = require("connect-mongo");
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/placeFinder';
+const dbUrl =  'mongodb://localhost:27017/placeFinder';
 
 // local mongodb for development 'mongodb://localhost:27017/placeFinder2'
 // connect to mongodb database
@@ -59,7 +59,7 @@ const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 
 // Create a configuration object for the session middleware.
 const sessionConfig = {
-    store: MongoDBStore.create({ mongoUrl: 'mongodb://localhost:27017/placeFinder' || process.env.DB_URL }),
+    store: MongoDBStore.create({ mongoUrl: 'mongodb://localhost:27017/placeFinder'  }),
     // Set the name for the session (cookie).
     name: 'session',
     
