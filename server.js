@@ -26,11 +26,22 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const user = require('./Models/user');
 const MongoDBStore = require("connect-mongo");
+const fs = require('fs');
 const dbUrl =  process.env.DB_URL ||  'mongodb://localhost:27017/placeFinder';
 
 // local mongodb for development 'mongodb://localhost:27017/placeFinder2'
 // connect to mongodb database
-mongoose.connect( dbUrl);
+// Additional SSL/TLS options if your MongoDB server uses SSL
+const sslOptions = {
+    ssl: true,
+    sslValidate: true,
+    sslCA: fs.readFileSync('path/to/ca-certificate.pem'),
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  };
+  
+  // Connect to MongoDB database with or without SSL options
+  mongoose.connect(dbUrl, sslOptions);
 
 // checks the connection 
 const db = mongoose.connection;
