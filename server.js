@@ -26,7 +26,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const user = require('./Models/user');
 const MongoDBStore = require("connect-mongo");
-const fs = require('fs');
+
 const dbUrl =  process.env.DB_URL ||  'mongodb://localhost:27017/placeFinder';
 
 // local mongodb for development 'mongodb://localhost:27017/placeFinder2'
@@ -35,7 +35,6 @@ const dbUrl =  process.env.DB_URL ||  'mongodb://localhost:27017/placeFinder';
 const sslOptions = {
     ssl: true,
     sslValidate: true,
-    sslCA: fs.readFileSync('path/to/ca-certificate.pem'),
     useNewUrlParser: true,
     useUnifiedTopology: true,
   };
